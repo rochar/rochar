@@ -1,3 +1,10 @@
+## Deploy 
+In the project directory, you can run:
+
+### `npm rundeploy`
+
+It will deploy to HitHub pahes (gh-pages branch)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
