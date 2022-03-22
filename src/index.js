@@ -8,7 +8,7 @@ const App = () => {
     <div className="container-fluid p-5 border bg-dark text-white">
       <h1>Comming Soon  - Lots of Stuff</h1>
       <p>This page is under construction. Please come back soon!</p>
-    </div>
+      </div>      
  );
 }
 
