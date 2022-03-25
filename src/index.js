@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {Tabs, TabsContent,TabContent} from "./tabs";
+import { Tabs, TabsContent, TabContent } from "./tabs";
+import Articles from "./articles";
 
 const App = () => {
-  return (
-    <div className="container-fluid p-5 border bg-dark text-white">
-      <h1>Comming Soon - Lots of Stuff</h1>
-         
-      <Tabs items={[{id:"articles", title:"Articles", active:"True"},{id:"tools",title:"Tools"}]}/>
-      <TabsContent>
-        <TabContent id="articles" active="True"/>
-        <TabContent id="tools"/>
-      </TabsContent>
-    </div>
+  return (    
+      <><Tabs
+      items={[
+        { id: "articles", title: "Articles", active: "True" },
+        { id: "tools", title: "Tools" },
+      ]} /><TabsContent>
+        <TabContent id="articles" active="True">
+          <Articles />
+        </TabContent>
+        <TabContent id="tools">
+          {<p>This page is under construction. Please come back soon!</p>}
+        </TabContent>
+      </TabsContent></>
   );
 };
 
