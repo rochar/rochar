@@ -8,7 +8,9 @@ class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = { articles: [], error: null };
+  }
 
+  componentDidMount() {
     axios
       .get(baseURL)
       .then((response) => {
@@ -26,7 +28,7 @@ class Articles extends React.Component {
     if (error !== null) {
       return <div>Could not load articles: {error}</div>;
     }
-    
+
     if (error === null) {
       const articlesComponents = articles.map((article) => (
         <div key={article.guid} className="col gy-4">
@@ -51,7 +53,7 @@ class Articles extends React.Component {
           {articlesComponents}
         </div>
       );
-    } 
+    }
   }
 }
 
