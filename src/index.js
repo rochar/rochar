@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Tabs, TabsContent, TabContent } from "./tabs";
-import Articles from "./articles";
+import { Tabs, TabsContent, TabContent } from "./components/tabs";
+import Articles from "./components/articles";
+import Tools from "./components/tools";
 
 const App = () => {
   return (    
@@ -14,7 +15,7 @@ const App = () => {
           <Articles />
         </TabContent>
         <TabContent id="tools">
-          {<p>This page is under construction. Please come back soon!</p>}
+          <Tools></Tools>
         </TabContent>
       </TabsContent></>
   );

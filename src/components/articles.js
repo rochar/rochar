@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "axios";
+import Spinner from "./spinner";
 
 const baseURL =
   "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rochar";
 
 class Articles extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { articles: [], error: null };
-  }
+  state = { articles: [], error: null };
 
   componentDidMount() {
     axios
@@ -22,14 +20,14 @@ class Articles extends React.Component {
       });
   }
 
-  render() {
+  conditionalRender() {
     const { articles, error } = this.state;
 
     if (error !== null) {
       return <div>Could not load articles: {error}</div>;
     }
 
-    if (error === null) {
+    if (articles.length > 0) {
       const articlesComponents = articles.map((article) => (
         <div key={article.guid} className="col gy-4">
           <div className="card">
@@ -54,6 +52,12 @@ class Articles extends React.Component {
         </div>
       );
     }
+
+    return <Spinner />;
+  }
+
+  render() {
+    return <div>{this.conditionalRender()}</div>;
   }
 }
 
