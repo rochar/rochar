@@ -4,5 +4,11 @@
         "title": "React Styleguidist",
         "url": "https://react-styleguidist.js.org/",
         "description": "Isolated React component development environment with a living style guide"        
+    },
+    {
+        "family": "Other",
+        "title": "CodeSandbox",
+        "url": "https://codesandbox.io/",
+        "description": "Create, share, and get feedback with collaborative sandboxes for rapid web development."        
     }
 ]
