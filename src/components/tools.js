@@ -4,29 +4,32 @@ import Spinner from "./spinner";
 class Tools extends React.Component {
   state = { toolsData: [], families: [], error: null };
 
-  componentDidMount() {
-    axios
-      .get("./data/toolsdata.json")
-      .then((response) => {
-        const unqiueFamilies = this.computeFamilies(response.data);
-        this.setState({
-          toolsData: response.data,
-          families: unqiueFamilies,
-          error: null,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ toolsData: [], families: [], error: error });
+  /*axios example with async await*/
+  async componentDidMount() {
+    try {
+      const response = await axios.get("./data/toolsdata.json");
+      const unqiueFamilies = this.computeFamilies(response.data);
+      this.setState({
+        toolsData: response.data,
+        families: unqiueFamilies,
+        error: null,
       });
+    } catch (error) {
+      console.log(error);
+      this.setState({ toolsData: [], families: [], error: error });
+    }
   }
+
+  
   renderFamilies() {
     const { toolsData, families, error } = this.state;
 
     if (error !== null) {
       return;
     }
-    const components = families.map((family) => <option key={family}>{family}</option>);
+    const components = families.map((family) => (
+      <option key={family}>{family}</option>
+    ));
     return (
       <select className="form-select" onChange={this.onSelectedFamilyChanged}>
         {components}
@@ -57,10 +60,10 @@ class Tools extends React.Component {
   render() {
     return (
       <div className="p-3">
-      <form onSubmit={this.onFormSubmit}>
-        {this.renderFamilies()}
-        <div>{this.renderListTools()}</div>
-      </form>
+        <form onSubmit={this.onFormSubmit}>
+          {this.renderFamilies()}
+          <div>{this.renderListTools()}</div>
+        </form>
       </div>
     );
   }
@@ -76,7 +79,7 @@ class Tools extends React.Component {
   computeFamilies(toolsData) {
     const uniqueValues = new Set();
     for (const tool of toolsData) uniqueValues.add(tool.family);
-    return Array.from(uniqueValues);
+    return Array.from(uniqueValues).sort();
   }
 }
 
