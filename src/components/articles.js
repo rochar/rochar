@@ -30,7 +30,7 @@ class Articles extends React.Component {
     if (articles.length > 0) {
       const articlesComponents = articles.map((article) => (
         <div key={article.guid} className="col gy-4">
-          <div className="card">
+          <div className="card border-info">
             <img
               src={article.thumbnail}
               className="card-img-top"
@@ -38,10 +38,8 @@ class Articles extends React.Component {
             />
             <div className="card-body bg-dark text-white">
               <h5 className="card-title">{article.title}</h5>
-              <p
-                className="card-text hide-img"
-                dangerouslySetInnerHTML={{ __html: article.description }}
-              />
+              <div className="card-text mt-3 fs-6 fw-light">{article.pubDate}</div>
+              <a href={article.link} target="_blank">Read More</a>
             </div>
           </div>
         </div>

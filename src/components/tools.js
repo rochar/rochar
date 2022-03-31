@@ -8,7 +8,7 @@ class Tools extends React.Component {
     axios
       .get("./data/toolsdata.json")
       .then((response) => {
-        const unqiueFamilies = this.computDistinctFamily(response.data);
+        const unqiueFamilies = this.computeFamilies(response.data);
         this.setState({
           toolsData: response.data,
           families: unqiueFamilies,
@@ -20,7 +20,7 @@ class Tools extends React.Component {
         this.setState({ toolsData: [], families: [], error: error });
       });
   }
-  rendeFamilies() {
+  renderFamilies() {
     const { toolsData, families, error } = this.state;
 
     if (error !== null) {
@@ -57,19 +57,23 @@ class Tools extends React.Component {
   render() {
     return (
       <div className="p-3">
-      <form>
-        {this.rendeFamilies()}
+      <form onSubmit={this.onFormSubmit}>
+        {this.renderFamilies()}
         <div>{this.renderListTools()}</div>
       </form>
       </div>
     );
   }
 
+  onFormSubmit(event) {
+    event.preventDefault();
+  }
+
   onSelectedFamilyChanged(event) {
     console.log(event.target.value);
   }
 
-  computDistinctFamily(toolsData) {
+  computeFamilies(toolsData) {
     const uniqueValues = new Set();
     for (const tool of toolsData) uniqueValues.add(tool.family);
     return Array.from(uniqueValues);
