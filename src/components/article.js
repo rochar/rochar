@@ -4,7 +4,6 @@ class Article extends React.Component{
     constructor(props)
     {
         super(props);
-
         this.articleRef = React.createRef();
     }
 

@@ -1,27 +1,34 @@
-import './app.css'
+import "./app.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Tabs, TabsContent, TabContent } from "./components/tabs";
 import Articles from "./components/articles";
 import Tools from "./components/tools";
+import Route from "./components/route";
+import Header from "./components/header";
+
 
 const App = () => {
-  return (    
-      <><Tabs
-      items={[
-        { id: "articles", title: "Articles", active: "True" },
-        { id: "tools", title: "Tools" },
-      ]} /><TabsContent>
-        <TabContent id="articles" active="True">
-          <Articles />
-        </TabContent>
-        <TabContent id="tools">
-          <Tools></Tools>
-        </TabContent>
-      </TabsContent></>
+const headerItems = [
+  { id: "articles", title: "Articles", path:"/"},
+  { id: "tools", title: "Tools", path:"/tools" },
+  ];
+
+  return (
+    <React.Fragment>
+      <Header items={headerItems}></Header>
+      <Route route="/">
+        <Articles />
+      </Route>
+      <Route route="/tools">
+        <Tools />
+      </Route>
+    </React.Fragment>
   );
 };
 
+/*https://reactjs.org/docs/strict-mode.html
+Strict mode checks are run in development mode only; they do not impact the production build.
+*/
 ReactDOM.render(
   <React.StrictMode>
     <App />
