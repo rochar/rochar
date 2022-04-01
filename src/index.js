@@ -1,3 +1,4 @@
+import './app.css'
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Tabs, TabsContent, TabContent } from "./components/tabs";

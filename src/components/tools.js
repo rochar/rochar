@@ -5,7 +5,7 @@ class Tools extends React.Component {
   state = { toolsData: [], families: [], error: null };
 
   /*axios example with async await*/
-  async componentDidMount() {
+   componentDidMount= async() => {
     try {
       const response = await axios.get("./data/toolsdata.json");
       const unqiueFamilies = this.computeFamilies(response.data);
@@ -43,12 +43,12 @@ class Tools extends React.Component {
       return <div>Could not load tools: {error}</div>;
     }
     if (toolsData.length > 0) {
-      const components = toolsData.map((tool) => (
-        <div key={tool.url} className="p-2">
-          <a href={tool.url} target="_blank">
-            {tool.title}
+      const components = toolsData.map(({url,description,title}) => (
+        <div key={url} className="p-2">
+          <a href={url} target="_blank">
+            {title}
           </a>
-          <div>{tool.description}</div>
+          <div>{description}</div>
         </div>
       ));
       return <div>{components}</div>;
