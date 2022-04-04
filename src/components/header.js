@@ -9,7 +9,7 @@ const Header = () => {
     { id: "twitter", url: "https://twitter.com/rochar77"}];
 
   const followItemsComponents = followItems.map(({id,url}) => (
-    <a key={id} href={url} className={id}><i className={`bx bxl-${id}`}></i></a>
+    <a key={id} href={url} className={id} target="_blank"><i className={`bx bxl-${id}`}></i></a>
   ));
 
   return (
