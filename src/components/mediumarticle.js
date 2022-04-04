@@ -1,6 +1,6 @@
 import React from "react";
 
-class Article extends React.Component{
+class MediumArticle extends React.Component{
     constructor(props)
     {
         super(props);
@@ -39,4 +39,4 @@ class Article extends React.Component{
     }
 }
 
-export default Article;
+export default MediumArticle;

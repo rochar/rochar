@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import Articles from "./components/articles";
 import Tools from "./components/tools";
 import Route from "./components/route";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Articles from "./components/articles";
 import "./assets/overrideiportfolio.css";
+import ArticleData from "./data/articles.json";
 
 
+ReactDOM.render(
+  <React.StrictMode>
+    <Header />
+  </React.StrictMode>,
+  document.querySelector("#header")
+);
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Articles items={ArticleData}/>
+  </React.StrictMode>,
+  document.querySelector("#main")
+);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,12 +31,7 @@ ReactDOM.render(
   document.querySelector("#footer")
 );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Header />
-  </React.StrictMode>,
-  document.querySelector("#header")
-);
+
 
 
 // const App = () => {

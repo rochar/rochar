@@ -21,18 +21,12 @@ const Header = () => {
           {followItemsComponents}
         </div>
       </div>
-
-      {/* <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+      <nav id="navbar" className="nav-menu navbar">
+        <ul> 
+          {/* Keep Portfolio Id to avoid change iportfolio css and javacript*/}
+          <li><a href="#portfolio" className="nav-link scrollto"><i className="bx bx-book-content"></i> <span>Articles</span></a></li>
         </ul>
-      </nav> */}
-      {/* <!-- .nav-menu --> */}
+      </nav>     
     </div>    
     );
 }
@@ -51,27 +45,6 @@ const Header = () => {
 //       </a>
 //     </li>
 //   ));
-//   return (
-//     <nav className="navbar navbar-expand-sm navbar-light bg-light">
-//       <div className="container-fluid">
-//         <a className="navbar-brand" href="#"></a>
-//         <button
-//           className="navbar-toggler"
-//           type="button"
-//           data-bs-toggle="collapse"
-//           data-bs-target="#navbarNav"
-//           aria-controls="navbarNav"
-//           aria-expanded="false"
-//           aria-label="Toggle navigation"
-//         >
-//           <span className="navbar-toggler-icon"></span>
-//         </button>
-//         <div className="collapse navbar-collapse" id="navbarNav">
-//           <ul className="navbar-nav">{itemsComponents}</ul>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
+
 
 export default Header;

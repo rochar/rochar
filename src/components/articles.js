@@ -1,50 +1,80 @@
 import React from "react";
-import axios from "axios";
-import Spinner from "./spinner";
-import Article from "./article";
 
-const baseURL =
-  "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rochar";
+const computeUniqueFamilies = (data) => {
+  const uniqueValues = new Set();
 
-class Articles extends React.Component {
-  state = { articles: [], error: null };
+  for (const item of data)
+    for (const familiy of item.families) uniqueValues.add(familiy);
+  return Array.from(uniqueValues).sort();
+};
 
-  componentDidMount() {
-    axios
-      .get(baseURL)
-      .then((response) => {
-        this.setState({ articles: response.data.items, error: null });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ articles: [], error: error });
-      });
-  }
+const Article = ({ item }) => {
 
-  conditionalRender() {
-    const { articles, error } = this.state;
+    let filterNames = "";
+    item.families.forEach(element => {
+        filterNames += " filter-" + element;
+    });
 
-    if (error !== null) {
-      return <div>Could not load articles: {error}</div>;
-    }
-
-    if (articles.length > 0) {
-      const articlesComponents = articles.map((article) => (
-        <Article key={article.guid} article={article}></Article>
-      ));
-      return (
-        <div className="mt-3 row row-cols-1 row-cols-sm-2 row-cols-md-3">
-          {articlesComponents}
+  return (
+    <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
+      <a href={item.url} target="_blank">
+        <div className="portfolio-wrap">
+          <div className="portfolio-title">{item.title}</div>
+          {/* require needs to have the hardcoded initial path so webpack 
+          will create a chunk for each image file in /assets/img/portfolio */}
+          <img
+            src={require(`../assets/img/portfolio/${item.image}`)}
+            className="img-fluid"
+            alt=""
+          />
         </div>
-      );
-    }
+      </a>
+    </div>
+  );
+};
 
-    return <Spinner />;
-  }
+const Articles = (props) => {
+  const families = computeUniqueFamilies(props.items);
+  var familyComponents = families.map((family) => (
+    <li key={family} data-filter={`.filter-${family}`}>
+      {family}
+    </li>
+  ));
+  var articleComponents = props.items.map((article) => (
+    <Article key={article.id} item={article}></Article>
+  ));
 
-  render() {
-    return <div>{this.conditionalRender()}</div>;
-  }
-}
+  return (
+    <section id="portfolio" className="portfolio section-bg">
+      <div className="container">
+        <div className="section-title">
+          <h2>Articles</h2>
+          <p>
+            Articles that I wrote, mainly to explore a topic, share and keep
+            knowledge about some pattern or technique!
+          </p>
+        </div>
+
+        <div className="row" data-aos="fade-up">
+          <div className="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" className="filter-active">
+                All
+              </li>
+              {familyComponents}
+            </ul>
+          </div>
+        </div>
+        <div
+          className="row portfolio-container"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          {articleComponents}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Articles;

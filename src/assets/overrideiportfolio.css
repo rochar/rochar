@@ -4,4 +4,23 @@
     background: url("./img/hero-bg.jpg") top center;
     background-size: cover;
     background-repeat: no-repeat;
-  }
+}
+
+/*================Custom Styles*/
+/*Portfolio*/
+.portfolio .portfolio-wrap .portfolio-title {
+  opacity: 1;
+  padding: 3px;
+  left: opx;
+  right: 0;
+  bottom: 0px;
+  z-index: 3;
+  position: absolute;
+  /* transition: all ease-in-out 0.3s; */
+  display: flex;
+  /* justify-content: center; */
+  color: #fff;
+  background-color: rgb(5, 13, 24, 0.5);
+  font-size: 16px;
+  font-weight: 300;
+}
