@@ -9,7 +9,7 @@ const MainPage = ({configuration}) => {
     <React.StrictMode>
       <Hero name={configuration.name}></Hero>
       <main id="main">
-        <Articles items={ArticleData} />
+        <Articles items={ArticleData} />        
       </main>
     </React.StrictMode>
   );

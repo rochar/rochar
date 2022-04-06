@@ -36,8 +36,8 @@ const Header = ({ configuration }) => {
             <li>
               <a href="#portfolio" className="nav-link scrollto">
                 <i className="bx bx-book-content"></i> <span>Articles</span>
-              </a>
-            </li>
+              </a>              
+            </li>      
           </ul>
         </nav>
       </div>
