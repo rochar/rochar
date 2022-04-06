@@ -1,4 +1,5 @@
 import React from "react";
+import RouteLink from "./routelink";
 
 const Header = ({ configuration }) => {
   const followItems = [
@@ -15,14 +16,16 @@ const Header = ({ configuration }) => {
   
   return (
     // <!-- ======= Header ======= -->
-    <header id="header">
+    
       <div className="d-flex flex-column">
         <div className="profile">
+        <RouteLink href="/">
           <img
             src={require("../assets/img/profile.jpg")}
             alt=""
             className="img-fluid rounded-circle"
           />
+          </RouteLink>
           <h1 className="text-light">
             <a href="index.html">{configuration.name}</a>
           </h1>
@@ -41,7 +44,7 @@ const Header = ({ configuration }) => {
           </ul>
         </nav>
       </div>
-    </header>
+    
     // <!-- End Header -->
   );
 };

@@ -5,9 +5,9 @@ import Route from "./components/route";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import MainPage from "./components/mainpage";
+import LoadLazyScript from "./components/loadLazyScript";
 
 import Configuration from "./configuration.json";
-
 import "./assets/overrideiportfolio.css";
 
 /*https://reactjs.org/docs/strict-mode.html
@@ -19,7 +19,7 @@ ReactDOM.render(
     <React.Fragment>
       <Route path="/">
         <MainPage configuration={Configuration} />
-      </Route> 
+      </Route>
       {/* <Route path="/tools">
         <Tools />
       </Route> */}
@@ -30,7 +30,7 @@ ReactDOM.render(
 ReactDOM.render(
   <React.StrictMode>
     <React.Fragment>
-    <Header configuration={Configuration} />  
+    <Header configuration={Configuration} />
     </React.Fragment>
   </React.StrictMode>,
   document.querySelector("#header")
@@ -38,11 +38,14 @@ ReactDOM.render(
 ReactDOM.render(
   <React.StrictMode>
     <React.Fragment>
-      <Footer />    
+      <Footer />
+      <LoadLazyScript path='/iportfolio/assets/js/main.js'></LoadLazyScript>
     </React.Fragment>
   </React.StrictMode>,
   document.querySelector("#footer")
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

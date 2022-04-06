@@ -17,8 +17,8 @@ const Article = ({ item }) => {
 
   return (
     <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
-      {/* <RouteLink href={`/articledetails?id=${item.id}`} target="_blank"> */}
-      <a href={item.url} target="_blank" >
+      <RouteLink href={`/articledetails?id=${item.id}`} target="_blank">
+      {/* <a href={item.url} target="_blank" > */}
         <div className="portfolio-wrap">
           <div className="portfolio-title">{item.title}</div>
           {/* require needs to have the hardcoded initial path so webpack 
@@ -29,8 +29,8 @@ const Article = ({ item }) => {
             alt=""
           />
         </div>
-        </a>
-      {/* </RouteLink> */}
+        {/* </a> */}
+      </RouteLink>
     </div>
   );
 };
