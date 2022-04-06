@@ -37,9 +37,10 @@ const Header = ({ configuration }) => {
           <ul>
             {/* Keep Portfolio Id to avoid change iportfolio css and javacript*/}
             <li>
-              <a href="#portfolio" className="nav-link scrollto">
+            <RouteLink href="/#portfolio"  className="nav-link scrollto">
+              {/* <a href="#portfolio" className="nav-link scrollto"> */}
                 <i className="bx bx-book-content"></i> <span>Articles</span>
-              </a>              
+                </RouteLink>
             </li>      
           </ul>
         </nav>
