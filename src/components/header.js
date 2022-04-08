@@ -50,19 +50,4 @@ const Header = ({ configuration }) => {
   );
 };
 
-// const Header = ({ items }) => {
-//   const itemsComponents = items.map((item) => (
-//     <li className="nav-item">
-//       <a
-//         className={`nav-link ${
-//           window.location.pathname === item.path ? " active" : ""
-//         } `}
-//         aria-current={`${window.location.pathname ? " active" : "page"} `}
-//         href={item.path}
-//       >
-//         {item.title}
-//       </a>
-//     </li>
-//   ));
-
 export default Header;

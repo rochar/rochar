@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import Tools from "./components/tools";
 import Route from "./components/route";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import MainPage from "./components/mainpage";
+import Home from "./components/home/home";
 import LoadLazyScript from "./components/loadLazyScript";
+import ArticleDetails from "./components/articles/articledetails";
 
 import Configuration from "./configuration.json";
 import "./assets/overrideiportfolio.css";
@@ -18,11 +18,11 @@ ReactDOM.render(
   <React.StrictMode>
     <React.Fragment>
       <Route path="/">
-        <MainPage configuration={Configuration} />
+        <Home configuration={Configuration} />
       </Route>
-      {/* <Route path="/tools">
-        <Tools />
-      </Route> */}
+      <Route path="/article">
+        <ArticleDetails/>
+      </Route>
     </React.Fragment>
   </React.StrictMode>,
   document.querySelector("#root")

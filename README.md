@@ -4,7 +4,7 @@ In the project directory, you can run:
 
 ### `npm rundeploy`
 
-It will deploy to GitHub pahes (gh-pages branch)
+It will deploy to GitHub pages (gh-pages branch)
 
 ## Web Site
  [Design](docs/design.md)

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Spinner from "./spinner";
+import Spinner from "../spinner";
 import MediumArticle from "./mediumarticle";
 
 const baseURL =

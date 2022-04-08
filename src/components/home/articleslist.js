@@ -1,5 +1,5 @@
 import React from "react";
-import RouteLink from "./routelink";
+import RouteLink from "../routelink";
 
 const computeUniqueFamilies = (data) => {
   const uniqueValues = new Set();
@@ -17,14 +17,14 @@ const Article = ({ item }) => {
 
   return (
     <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
-      <RouteLink href={`/articledetails?id=${item.id}`} target="_blank">
+      <RouteLink href={`/article?id=${item.id}`} target="_blank">
       {/* <a href={item.url} target="_blank" > */}
         <div className="portfolio-wrap">
           <div className="portfolio-title">{item.title}</div>
           {/* require needs to have the hardcoded initial path so webpack 
           will create a chunk for each image file in /assets/img/portfolio */}
           <img
-            src={require(`../assets/img/portfolio/${item.image}`)}
+            src={require(`../../assets/img/portfolio/${item.image}`)}
             className="img-fluid"
             alt=""
           />
@@ -35,7 +35,7 @@ const Article = ({ item }) => {
   );
 };
 
-const Articles = (props) => {
+const ArticlesList = (props) => {
   const families = computeUniqueFamilies(props.items);
   var familyComponents = families.map((family) => (
     <li key={family} data-filter={`.filter-${family}`}>
@@ -79,4 +79,4 @@ const Articles = (props) => {
   );
 };
 
-export default Articles;
+export default ArticlesList;
