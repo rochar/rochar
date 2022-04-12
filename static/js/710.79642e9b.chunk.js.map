@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/710.79642e9b.chunk.js","mappings":"2IAEA,qBAAe,OACX","sources":["components/articles/NotFoundArticle.js"],"sourcesContent":["import React from 'react';\r\n\r\nexport default () => (\r\n    <h1>Article Not Found</h1>\r\n);"],"names":[],"sourceRoot":""}
