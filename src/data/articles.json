@@ -2,10 +2,10 @@
     {
         "families": ["CSharp"],
         "title": "Avoid Relay Commands and prevent CPU usage peaks in WPF(C#)",
-        "url": "https://medium.com/@rochar/avoid-relay-commands-and-prevent-cpu-usage-peaks-in-wpf-c-ffe672de8559",
         "description": "Multiple Relay Commands instances can become a source of serious CPU usage for long living View Models in a WPF application using MVVM pattern."        ,
         "id" : "avoidrelaycommands",
-        "image" : "avoidrelaycommands.jpg"
+        "image" : "avoidrelaycommands.jpg",
+        "redirectToExternal" : false
     },
     {
         "families": ["CSharp"],
@@ -13,7 +13,8 @@
         "url": "https://medium.com/@rochar/optimize-memory-allocation-in-a-consumer-producer-pattern-c-67298d32034c",
         "description": "A simple technique to avoid Garbage Collector (GC) pressure for large applications where GC performance is a must."        ,
         "id" : "A2",
-        "image" : "article2.jpg"
+        "image" : "article2.jpg",
+        "redirectToExternal" : true
     },
     {
         "families": ["CUDA","CSharp"],
@@ -21,6 +22,7 @@
         "url": "https://medium.com/@rochar/call-cuda-kernels-from-managed-code-net-c-in-a-simple-way-1c6540da64b5",
         "description": "utorial on how to call CUDA Kernels from a .Net (C#) library without any third party dependencies, “simple and direct”!"        ,
         "id" : "A3",
-        "image" : "article3.png"
+        "image" : "article3.png",
+        "redirectToExternal" : true
     }
 ]
