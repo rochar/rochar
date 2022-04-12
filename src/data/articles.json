@@ -4,8 +4,8 @@
         "title": "Avoid Relay Commands and prevent CPU usage peaks in WPF(C#)",
         "url": "https://medium.com/@rochar/avoid-relay-commands-and-prevent-cpu-usage-peaks-in-wpf-c-ffe672de8559",
         "description": "Multiple Relay Commands instances can become a source of serious CPU usage for long living View Models in a WPF application using MVVM pattern."        ,
-        "id" : "A1",
-        "image" : "article1.jpg"
+        "id" : "avoidrelaycommands",
+        "image" : "avoidrelaycommands.jpg"
     },
     {
         "families": ["CSharp"],

@@ -4,14 +4,13 @@ import React from "react";
 
 const ArticleDetails = () => {
     //TODO Get from Query string
-  const id = "A1";
+  const id = "avoidrelaycommands";
   const ArticleComponent = React.lazy(() =>
     import(`./${id}`).catch(() => import(`./NotFoundArticle`))
   );
 
   return (
     <main id="main">
-      <h1>Article Details</h1>
       <React.Suspense fallback="Loading article...">
         <ArticleComponent />
       </React.Suspense>
