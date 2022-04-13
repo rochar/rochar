@@ -1,5 +1,5 @@
 import React from "react";
-import RouteLink from "../routelink";
+import { Link } from "react-router-dom";
 
 const computeUniqueFamilies = (data) => {
   const uniqueValues = new Set();
@@ -35,7 +35,7 @@ const Article = ({ item }) => {
 
   return (
     <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
-      <RouteLink href={`/article?id=${item.id}`} target="_blank">
+      <Link to={`/article?id=${item.id}`} key={item.id}>
         <div className="portfolio-wrap">
           <div className="portfolio-title">{item.title}</div>
           {/* require needs to have the hardcoded initial path so webpack 
@@ -46,7 +46,7 @@ const Article = ({ item }) => {
             alt=""
           />
         </div>
-      </RouteLink>
+      </Link>
     </div>
   );
 };

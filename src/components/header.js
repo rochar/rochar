@@ -1,5 +1,5 @@
 import React from "react";
-import RouteLink from "./routelink";
+import { Link } from "react-router-dom";
 
 const Header = ({ configuration }) => {
   const followItems = [
@@ -13,39 +13,36 @@ const Header = ({ configuration }) => {
       <i className={`bx bxl-${id}`}></i>
     </a>
   ));
-  
+
   return (
     // <!-- ======= Header ======= -->
-    
-      <div className="d-flex flex-column">
-        <div className="profile">
-        <RouteLink href="/">
+    <div className="d-flex flex-column">
+      <div className="profile">
+        <Link to="/">
           <img
             src={require("../assets/img/profile.jpg")}
             alt=""
             className="img-fluid rounded-circle"
           />
-          </RouteLink>
-          <h1 className="text-light">
-            <a href="index.html">{configuration.name}</a>
-          </h1>
-          <div className="social-links mt-3 text-center">
-            {followItemsComponents}
-          </div>
+        </Link>
+        <h1 className="text-light">
+          <a href="index.html">{configuration.name}</a>
+        </h1>
+        <div className="social-links mt-3 text-center">
+          {followItemsComponents}
         </div>
-        <nav id="navbar" className="nav-menu navbar">
-          <ul>
-            {/* Keep Portfolio Id to avoid change iportfolio css and javacript*/}
-            <li>
-            <RouteLink href="/#portfolio"  className="nav-link scrollto">
-              {/* <a href="#portfolio" className="nav-link scrollto"> */}
-                <i className="bx bx-book-content"></i> <span>Articles</span>
-                </RouteLink>
-            </li>      
-          </ul>
-        </nav>
       </div>
-    
+      <nav id="navbar" className="nav-menu navbar">
+        <ul>
+          {/* Keep Portfolio Id to avoid change iportfolio css and javacript*/}
+          <li>
+            <a href="/#portfolio" className="nav-link scrollto">
+              <i className="bx bx-book-content"></i> <span>Articles</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     // <!-- End Header -->
   );
 };

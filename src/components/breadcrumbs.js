@@ -1,5 +1,5 @@
 import React from "react";
-import RouteLink from "./routelink";
+import { Link } from "react-router-dom";
 
 const Breadcrumbs = ({ title }) => {
   {
@@ -12,7 +12,7 @@ const Breadcrumbs = ({ title }) => {
           <h2>{title}</h2>
           <ol>
             <li>
-              <RouteLink href="/">Home</RouteLink>
+              <Link to="/">Home</Link>
             </li>
             {/* <li>{title}</li> */}
           </ol>

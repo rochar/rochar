@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import Route from "./components/route";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./components/home/home";
@@ -10,6 +10,7 @@ import ArticleDetails from "./components/articles/articledetails";
 import Configuration from "./configuration.json";
 import "./assets/overrideiportfolio.css";
 
+
 /*https://reactjs.org/docs/strict-mode.html
 Strict mode checks are run in development mode only; they do not impact the production build.
 */
@@ -17,35 +18,27 @@ Strict mode checks are run in development mode only; they do not impact the prod
 ReactDOM.render(
   <React.StrictMode>
     <React.Fragment>
-      <Route path="/">
-        <Home configuration={Configuration} />
-      </Route>
-      <Route path="/article">
-        <ArticleDetails/>
-      </Route>
+      <Router>
+        {/* <!-- ======= Header ======= --> */}
+        <header id="header">
+          <Header configuration={Configuration} />
+        </header>
+        {/* <!-- End Header --> */}
+        <Routes>
+          <Route path="/" element={<Home configuration={Configuration} />} />
+          <Route path="article" element={<ArticleDetails />} />
+        </Routes>
+      </Router>
+      {/* <!-- ======= Footer ======= --> */}
+      <footer id="footer">
+        <Footer />
+      </footer>
+      <LoadLazyScript path="/iportfolio/assets/js/main.js"></LoadLazyScript>
+      {/* <!-- End  Footer --> */}
     </React.Fragment>
   </React.StrictMode>,
   document.querySelector("#root")
 );
-ReactDOM.render(
-  <React.StrictMode>
-    <React.Fragment>
-    <Header configuration={Configuration} />
-    </React.Fragment>
-  </React.StrictMode>,
-  document.querySelector("#header")
-);
-ReactDOM.render(
-  <React.StrictMode>
-    <React.Fragment>
-      <Footer />
-      <LoadLazyScript path='/iportfolio/assets/js/main.js'></LoadLazyScript>
-    </React.Fragment>
-  </React.StrictMode>,
-  document.querySelector("#footer")
-);
-
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
