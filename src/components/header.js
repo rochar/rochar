@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink} from 'react-router-hash-link';
 
 const Header = ({ configuration }) => {
   const followItems = [
@@ -36,9 +37,9 @@ const Header = ({ configuration }) => {
         <ul>
           {/* Keep Portfolio Id to avoid change iportfolio css and javacript*/}
           <li>
-            <a href="/#portfolio" className="nav-link scrollto">
+            <HashLink to="/#portfolio" className="nav-link scrollto">
               <i className="bx bx-book-content"></i> <span>Articles</span>
-            </a>
+            </HashLink>
           </li>
         </ul>
       </nav>

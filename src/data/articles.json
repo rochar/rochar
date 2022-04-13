@@ -9,11 +9,10 @@
     },
     {
         "families": ["CSharp"],
-        "title": "Optimize Memory Allocation in a Producer / Consumer Pattern (C#)",
-        "url": "https://medium.com/@rochar/optimize-memory-allocation-in-a-consumer-producer-pattern-c-67298d32034c",
+        "title": "Optimize Memory Allocation in a Producer / Consumer Pattern (C#)",        
         "description": "A simple technique to avoid Garbage Collector (GC) pressure for large applications where GC performance is a must."        ,
-        "id" : "A2",
-        "image" : "article2.jpg",
+        "id" : "optimizememallocation",
+        "image" : "optimizememallocation.png",
         "redirectToExternal" : true
     },
     {

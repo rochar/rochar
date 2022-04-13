@@ -1,12 +1,12 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 
-//see https://codesandbox.io/s/01-loading-components-dynamically-without-switch-statement-forked-kcznxq?file=/src/App.js
 
 const ArticleDetails = () => {
-    //TODO Get from Query string
-  const id = "avoidrelaycommands";
+  let params = useParams();
+
   const ArticleComponent = React.lazy(() =>
-    import(`./${id}`).catch(() => import(`./NotFoundArticle`))
+    import(`./${params.id}`).catch(() => import(`./NotFoundArticle`))
   );
 
   return (

@@ -11,7 +11,7 @@ const Article = () => {
   // <!-- ======= Portfolio Details Section ======= -->
   return (
     <React.Fragment>
-      <Breadcrumbs title="Avoid Relay Commands and prevent CPU usage peaks in WPF(C#)" />
+      <Breadcrumbs title="Optimize Memory Allocation in a Producer / Consumer Pattern (C#)" />
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           <div className="row gy-4">

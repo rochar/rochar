@@ -10,7 +10,6 @@ import ArticleDetails from "./components/articles/articledetails";
 import Configuration from "./configuration.json";
 import "./assets/overrideiportfolio.css";
 
-
 /*https://reactjs.org/docs/strict-mode.html
 Strict mode checks are run in development mode only; they do not impact the production build.
 */
@@ -23,11 +22,22 @@ ReactDOM.render(
         <header id="header">
           <Header configuration={Configuration} />
         </header>
-        {/* <!-- End Header --> */}
+        {/* <!-- End Header --> */}        
         <Routes>
           <Route path="/" element={<Home configuration={Configuration} />} />
-          <Route path="article" element={<ArticleDetails />} />
+          <Route path="article/:id" element={<ArticleDetails />}/>
+          <Route
+            path="*"
+            element={
+              <main  id="main">
+                <div className="container">                  
+                <p>There's nothing here!</p>
+                </div>
+              </main>
+            }
+          />
         </Routes>
+        
       </Router>
       {/* <!-- ======= Footer ======= --> */}
       <footer id="footer">

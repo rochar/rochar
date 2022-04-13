@@ -14,7 +14,7 @@ const Article = ({ item }) => {
   item.families.forEach((element) => {
     filterNames += " filter-" + element;
   });
-
+  
   if (item.redirectToExternal)
     return (
       <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
@@ -35,7 +35,7 @@ const Article = ({ item }) => {
 
   return (
     <div className={`col-lg-4 col-md-6 portfolio-item ${filterNames}`}>
-      <Link to={`/article?id=${item.id}`} key={item.id}>
+      <Link to={`/article/${item.id}`} key={item.id}>
         <div className="portfolio-wrap">
           <div className="portfolio-title">{item.title}</div>
           {/* require needs to have the hardcoded initial path so webpack 
