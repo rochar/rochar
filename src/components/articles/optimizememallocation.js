@@ -3,11 +3,11 @@ import Breadcrumbs from "../breadcrumbs";
 import ArticleInfo from "./articleinfo";
 import Gist from "react-gist";
 
-//import ArticleImage from "../../assets/img/articles/optimizememallocation.jpg";
+import ArticleImage from "../../assets/img/articles/optimizememallocation1.png";
 
 const Article = () => {
   const summary =
-    "Multiple Relay Commands instances can become a source of serious CPU usage for long living View Models in a WPF application using MVVM pattern.";
+    "A simple technique to avoid Garbage Collector (GC) pressure for large applications where GC performance is a must.";
   // <!-- ======= Portfolio Details Section ======= -->
   return (
     <React.Fragment>
@@ -18,185 +18,63 @@ const Article = () => {
             <div className="col-lg-8">
               <h2>Introduction</h2>
               <p>
-                When using MVVM pattern in a WPF application we usually create
-                custom ICommand implementations, one of them is known as Relay
-                Command. If you are unfamiliar with commands a good starting
-                point is{" "}
-                <a
-                  href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/commanding-overview?view=netframeworkdesktop-4.8"
-                  target="_blank"
-                >
-                  here
-                </a>
-                .
+                Consumer / Producer Pattern is an example of a multi-thread synchronization problem: two threads, one producing data and another consuming data.
               </p>
-              <p>
-                I have worked in several WPF applications that had peaks on CPU
-                usage, and profiling the application, using{" "}
-                <a href="https://www.jetbrains.com/profiler/" target="_blank">
-                  dotTrace
-                </a>
-                &nbsp;profile for example, we could see several millions of
-                calls to the CanExecute method. This type of commands are spread
-                around the application and have significant impact for long
-                living View Models, like the “Root” View Model, that could have
-                hundred of commands, for example: in menus, context menus ,
-                toolbars and other input controls. In this article I explain why
-                Relay Commands may have a performance hit and I give some clean
-                and simple solutions to solve it.
-              </p>
-              <h2> Relay Commands</h2>
-              The first timed I read about Relay Commands was in{" "}
-              <a
-                href="https://github.com/lbugnion/mvvmlight/blob/master/GalaSoft.MvvmLight/GalaSoft.MvvmLight%20(PCL)/Command/RelayCommand.cs"
-                target="_blank"
-              >
-                MVVM Light Toolkit
-              </a>
-              , since then I have seen several implementation examples like this
-              <a
-                href="https://www.technical-recipes.com/2016/using-relaycommand-icommand-to-handle-events-in-wpf-and-mvvm/"
-                target="_blank"
-              >
-                {" "}
-                one
-              </a>
-              . So let us look to an usual Relay Command implementation in the
-              next snippet:
-              <Gist id="6229f82df53f2856a49ed8b1595fbcf5"></Gist>
-              <p>
-                To create an instance (see the constructor) you only need to
-                implement the action for the execute parameter(code to execute
-                when a user clicks a button for example) and the action for the
-                canExecute (state defining if the command can be executed) and
-                that is the main advantage of it, simple and fast to implement.
-              </p>
-              <p>A good example is the print command:</p>
-              <Gist id="0e78983201513a4590116712a6dc5af0"></Gist>
-              <p>
-                {" "}
-                The print command command can be executed when the print service
-                is online and just prints when invoked, simple as that, no need
-                to explicitly raise the CanExecuteChanged event(will explain
-                later why) to notify the UI to refresh / invalidate the current
-                state of the inputs associated and therefore no need to think or
-                implement the logic that can change the CanExecute state. In
-                many cases this is an advantage because you can quickly
-                implement the command. If command depends on third party
-                services or data outside of our domain, that we do not own.
-                Probably that third party service is not able to notify the
-                state changed, so we need to continuously querying it, in this
-                case the relay command fits well.
-              </p>
-              <p>
-                <strong>
-                  Why don’t we need to call explicitly the CanExecuteChanged
-                  EventHandler?
-                </strong>
-              </p>
-              <p>Looking to the following snippet of the Relay Command:</p>
-              <Gist id="ca4f05673c26800d9c595b9fae40b106"></Gist>
-              <p>
-                Whenever the CanExecuteChanged is subscribed in fact it’s
-                subscribing the CommandManager.RequerySuggested, and this is the
-                root cause of the performance issue that we may face:
-              </p>
-              <figure className="text-end">
-                <blockquote className="blockquote">
-                  <p>
-                    Occurs when the{" "}
-                    <a
-                      href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.input.commandmanager?view=netframework-4.8"
-                      target="_blank"
-                    >
-                      {" "}
-                      CommandManager{" "}
-                    </a>{" "}
-                    detects conditions that might change the ability of a
-                    command to execute
-                  </p>
-                </blockquote>
-                <figcaption className="blockquote-footer">
-                  Microsoft documentation{" "}
-                  <cite title="Source Title">CommandManager Class</cite>
-                </figcaption>
+              <p>The produced data usually comes from a external system or component and needs to be transformed into a new structure (DTO) known and designed to be used by the consumer (this allows, for example, avoid coupling between the two systems or components).</p>
+              <p>This transformation means creating new objects, and for large applications, where memory allocation must be optimized, to avoid Garbage Collection, if the produced data is significant this will create additional GC pressure and you will start seeing performance issues.</p>
+              <p>This article shows an example using an ObjectPool (a concept similar to <a href="https://docs.microsoft.com/en-us/dotnet/api/system.buffers.arraypool-1?view=netcore-3.0" target="_blank"> ArrayPool</a>), but uses it for holding objects, to be reused and therefore minimize object creation.</p>
+              <p>The Producer / Consumer classes uses System.Threading.Channels and is based in the example described in this article.</p>
+              <p>The full code of this example can be found in <a href="https://github.com/rochar/ConsumerPRoducerObjectPoolSample" target="_blank">GitHub</a>.</p>
+
+              <h2>Object Pool Implementation</h2>
+              <p>The <em>ObjectPool</em> is responsible to keep created objects and to Rent them to any client requiring a new one. The client is responsible to Return it to the pool if not needed.</p>
+              <p>If no object is available in the pool the <em>Rent</em> method will create a new object using the _objectGenerator function, otherwise, will return an object from the pool.</p>
+              <p>The <em> Return</em> method will add the object back to the pool.</p>
+
+              <Gist id="35c703ee434284d1e5ebec994e1e2e49"></Gist>
+              
+              <p>One important property in the maxElements that the pool can hold and this has to do with the problem you are trying to solve, it should be the minimum value that fits your problem: minimize object creation and minimize memory consumption.</p>
+
+              <h2>Producer / Consumer Implementation</h2>              
+              <h3>Producer</h3>
+             
+             <p>This producer simulate data being returned from a external system, it returns an <em>ExternalDto</em> (not owned by the component that we are developing) and maps it to a DomainDto (owned by our component) and adds it to the channel:</p>
+             <Gist id="59179a993d6d0db91e06649198010e25"></Gist>
+             <h3>Consumer</h3>
+             <p>The consumer retrieves data from the channel and processes it:</p>
+             <Gist id="b6ed4db5577bb8f9a0a6482f479b35dd"></Gist>
+
+             <h3>Producer With Pool</h3>
+             <p>Using the pool instead of creating a DomainDto, the producer rents it from the pool, so it can be a new object or an already existing one.</p>
+             <Gist id="ed580840c6e351a27dcc5679242f7870"></Gist>
+             
+             <h3>Consumer With Pool</h3>
+             <p>The only difference is that the Consumer returns the object to the pool after processing it:</p>
+             <Gist id="eb5128efb86a67a0b6df98bda165b285"></Gist>
+             
+             <h2>Benchmark</h2>
+            <p>The example on GitHub uses <a href="https://github.com/dotnet/BenchmarkDotNet" target="_blank">BenchmarkDotNet</a> to measure the allocated Memory and to compare performance. The benchmark simulates a producer / consumer with 100k, 1M and 5M objects produce and consumed:</p>
+              <figure className="text-center">
+                <img src={ArticleImage} alt="Benchmark Results" />
+                <figcaption className="figure-caption">Benchmark Results</figcaption>
               </figure>
-              <p>
-                It’s quite difficult to have an overview when this event is
-                raised, because its trigger outside the CommandManager
-                boundaries, you can dig the dotnet/WPF{" "}
-                <a target="_blank" href="https://github.com/dotnet/wpf">
-                  {" "}
-                  repository{" "}
-                </a>
-                . If you add a break point to the CanExecute method you will see
-                this is called very very very often. A mouse move is sufficient
-                to trigger this event!
-              </p>
-              <h2>Commands that can always be executed</h2>
-              <p>
-                Look to your commands and do not get surprised if a considerable
-                part of then returns always true on the CanExecute method. An
-                easy solution is to implement a command that simple returns true
-                and completely avoid the Relay Command:
-              </p>
-              <Gist id="7f824b8a18445405024e8904cfb42655"></Gist>
-              <p>With this change you easily save a lot of CPU usage.</p>
-              <h2>Action or Delegate Commands</h2>
-              <p>
-                To remove the dependency to CommandManager.RequerySuggested, we
-                need to code the rules that can change the CanExecute state. To
-                do that we replace the Relay Command for a very similar Action
-                Command:
-              </p>
-              <Gist id="50a417af8354992895de12d91f756fb3"></Gist>
-              <p>
-                The main difference is that there is not subscription to
-                CommandManager.RequerySuggested. The previous PrintCommand
-                example needs to be change to:
-              </p>
-              <Gist id="a1a885df1bce1b6017208b469a00a7b5"></Gist>
-              <p>
-                When IsOnlineChanged is raised, in PrintService, we need to
-                explicitly call the RaiseCanExecuteChanged, in order to notify
-                the UI to refresh according to the new state of the command.
-                This small change may reduce the number of calls to CanExecute
-                method to only one call as long asthe PrintService state does
-                not change and this is much more optimized comparing to the
-                Relay Command.
-              </p>
-              <h2>Avoid logic inside CanExecute</h2>
-              <p>
-                Another source of performance issues is that we tend to compute
-                the CanExecute state inside the method itself. If this
-                computation is expensive, and called multiple times, although
-                the state did not change (the command can be attached to
-                multiple inputs), it will have a performance hit. To resolve
-                this issue we just need to compute it to a local variable and
-                then return always the local variable value:
-              </p>
-              <Gist id="cbfb8192e9aced3ace6311da41e6e5f2"></Gist>
+              <p>The Delta between the memory Allocated it’s the exact gain of using the Pool and not creating new objects. In this case the DomainDto is a very light class, even so we can see considerable gains for 100k objects.</p>
+              <p>For the performance: in the Mean we can not see any real difference, because DomainDto is light and so the creation of this object is not very expensive.</p>
+              <p>The correlation that seems to exists between the different results and variables (Median, Gen 0) is related to the fact that the producer/consumer are simulated and the produce/consumed elements are done at exactly same rate in the full execution. In a real world application this will not happen.</p>
+              <h2>Important considerations</h2>
+              <p>Remember the <em>maxElements</em>  parameter of <em>ObjectPools</em> class, this value should be related to the difference between producer and consumer throughput, if you are producing faster than consuming this value should be higher, otherwise can be lower. maxElements can be the expected produce elements in queue + delta.</p>
+              <hr></hr>
               <h2>Conclusion</h2>
-              <p>
-                If you are developing a application and not a POC avoid the
-                usage of Relay Commands or similar, this will save you for sure
-                a lot of rework. Unless it’s used in very specif situations:
-                short living view models or has dependencies on data that needs
-                to be queried continuously.
-              </p>
-              <p>
-                In my next post I will show how can we improve this
-                implementation using Reactive Extensions, so keep in touch.
-              </p>
+              <p>If your application suffers from Garbage Collection and you are continuous creating and releasing objects consider to use ObjecPool concept. The Producer Consumer Pattern is a good place to include it.</p>
+              <p>Do measure your application for any change.</p>
+
               <p>See you soon.</p>
-              {/* <figure className="text-center">
-                <img src={ArticleImage} alt="Keep it simple. Keep it clean." />
-                <figcaption className="figure-caption">Keep it simple. Keep it clean.</figcaption>
-              </figure> */}
+              
             </div>
             <ArticleInfo
               category="C#"
-              date="Apr 14, 2020"
+              date="Nov 10, 2019"
+              githuburl="https://github.com/rochar/ConsumerPRoducerObjectPoolSample"
               summary={summary}
             ></ArticleInfo>
           </div>

@@ -12,8 +12,9 @@
         "title": "Optimize Memory Allocation in a Producer / Consumer Pattern (C#)",        
         "description": "A simple technique to avoid Garbage Collector (GC) pressure for large applications where GC performance is a must."        ,
         "id" : "optimizememallocation",
-        "image" : "optimizememallocation.png",
-        "redirectToExternal" : true
+        "url":"https://medium.com/@rochar/optimize-memory-allocation-in-a-consumer-producer-pattern-c-67298d32034c",
+        "image" : "optimizememallocation.jpg",
+        "redirectToExternal" : false
     },
     {
         "families": ["CUDA","CSharp"],
@@ -21,7 +22,7 @@
         "url": "https://medium.com/@rochar/call-cuda-kernels-from-managed-code-net-c-in-a-simple-way-1c6540da64b5",
         "description": "utorial on how to call CUDA Kernels from a .Net (C#) library without any third party dependencies, “simple and direct”!"        ,
         "id" : "A3",
-        "image" : "article3.png",
+        "image" : "cudakernelsfrommanagedcode.png",
         "redirectToExternal" : true
     }
 ]

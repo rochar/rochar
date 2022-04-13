@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 
-
 const ArticleDetails = () => {
   let params = useParams();
 
@@ -10,11 +9,10 @@ const ArticleDetails = () => {
   );
 
   return (
-    <main id="main">
-      <React.Suspense fallback="Loading article...">
-        <ArticleComponent />
-      </React.Suspense>
-    </main>
+    
+       <React.Suspense fallback={<h1>Loading, please wait...</h1>}>
+        <ArticleComponent />        
+      </React.Suspense> 
   );
 };
 

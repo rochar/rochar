@@ -12,6 +12,7 @@
    */
   const select = (el, all = false) => {
     el = el.trim()
+    el= el.replace("#/#","#");
     if (all) {
       return [...document.querySelectorAll(el)]
     } else {

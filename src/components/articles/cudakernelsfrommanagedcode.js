@@ -3,7 +3,7 @@ import Breadcrumbs from "../breadcrumbs";
 import ArticleInfo from "./articleinfo";
 import Gist from "react-gist";
 
-import ArticleImage from "../../assets/img/articles/optimizememallocation.jpg";
+//import ArticleImage from "../../assets/img/articles/optimizememallocation.jpg";
 
 const Article = () => {
   const summary =
@@ -11,7 +11,7 @@ const Article = () => {
   // <!-- ======= Portfolio Details Section ======= -->
   return (
     <React.Fragment>
-      <Breadcrumbs title="Avoid Relay Commands and prevent CPU usage peaks in WPF(C#)" />
+      <Breadcrumbs title="Optimize Memory Allocation in a Producer / Consumer Pattern (C#)" />
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           <div className="row gy-4">
@@ -189,10 +189,10 @@ const Article = () => {
                 implementation using Reactive Extensions, so keep in touch.
               </p>
               <p>See you soon.</p>
-              <figure className="text-center">
+              {/* <figure className="text-center">
                 <img src={ArticleImage} alt="Keep it simple. Keep it clean." />
                 <figcaption className="figure-caption">Keep it simple. Keep it clean.</figcaption>
-              </figure>
+              </figure> */}
             </div>
             <ArticleInfo
               category="C#"

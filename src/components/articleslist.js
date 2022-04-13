@@ -24,7 +24,7 @@ const Article = ({ item }) => {
             {/* require needs to have the hardcoded initial path so webpack 
           will create a chunk for each image file in /assets/img/portfolio */}
             <img
-              src={require(`../../assets/img/articles/${item.image}`)}
+              src={require(`../assets/img/articles/${item.image}`)}
               className="img-fluid"
               alt=""
             />
@@ -41,7 +41,7 @@ const Article = ({ item }) => {
           {/* require needs to have the hardcoded initial path so webpack 
           will create a chunk for each image file in /assets/img/portfolio */}
           <img
-            src={require(`../../assets/img/articles/${item.image}`)}
+            src={require(`../assets/img/articles/${item.image}`)}
             className="img-fluid"
             alt=""
           />

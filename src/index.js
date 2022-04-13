@@ -6,6 +6,8 @@ import Footer from "./components/footer";
 import Home from "./components/home/home";
 import LoadLazyScript from "./components/loadLazyScript";
 import ArticleDetails from "./components/articles/articledetails";
+import ArticlesList from "./components/articleslist";
+import ArticleData from "./data/articles.json";
 
 import Configuration from "./configuration.json";
 import "./assets/overrideiportfolio.css";
@@ -22,29 +24,25 @@ ReactDOM.render(
         <header id="header">
           <Header configuration={Configuration} />
         </header>
-        {/* <!-- End Header --> */}        
-        <Routes>
-          <Route path="/" element={<Home configuration={Configuration} />} />
-          <Route path="article/:id" element={<ArticleDetails />}/>
-          <Route
-            path="*"
-            element={
-              <main  id="main">
-                <div className="container">                  
-                <p>There's nothing here!</p>
-                </div>
-              </main>
-            }
-          />
-        </Routes>
-        
+        {/* <!-- End Header --> */}
+        <main id="main">
+          <Routes>
+            <Route path="/" element={<Home configuration={Configuration} />} />
+            <Route path="article/:id" element={<ArticleDetails />} />
+            <Route
+              path="*"
+              element={<div className="container"><p>NotFound  - There's nothing here!</p></div>}
+            />
+          </Routes>
+          <ArticlesList items={ArticleData} />
+        </main>
+        {/* <!-- ======= Footer ======= --> */}
+        <footer id="footer">
+          <Footer />
+        </footer>
+        <LoadLazyScript path="/iportfolio/assets/js/main.js"></LoadLazyScript>
+        {/* <!-- End  Footer --> */}
       </Router>
-      {/* <!-- ======= Footer ======= --> */}
-      <footer id="footer">
-        <Footer />
-      </footer>
-      <LoadLazyScript path="/iportfolio/assets/js/main.js"></LoadLazyScript>
-      {/* <!-- End  Footer --> */}
     </React.Fragment>
   </React.StrictMode>,
   document.querySelector("#root")

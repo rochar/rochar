@@ -8,9 +8,8 @@ const ArticleInfo = ({ category, date, githuburl, summary }) => {
         GitHub
       </a>
     );
-  } else {
-    githublink = " - ";
-  }
+  } else { githublink = " - ";}
+  
   return (
     <div className="col-lg-4">
       <div className="portfolio-info">
@@ -23,16 +22,13 @@ const ArticleInfo = ({ category, date, githuburl, summary }) => {
             <strong>Publish date</strong>: {date}
           </li>
           <li>
-            <strong>Project URL</strong>:
-            {githublink}
+            <strong>Project URL</strong>: {githublink}
           </li>
         </ul>
       </div>
       <div className="portfolio-description">
         <h2>Summary</h2>
-        <p>
-          {summary}
-        </p>
+        <p>{summary}</p>
       </div>
     </div>
   );
