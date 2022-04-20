@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rochar.github.io/sitemap.xml
