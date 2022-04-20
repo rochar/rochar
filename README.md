@@ -8,6 +8,8 @@ It will deploy to GitHub pages (gh-pages branch)
 
 ## Web Site
  [Design](docs/design.md)
+# Google
+ [Search Console](https://search.google.com/search-console?resource_id=https://rochar.github.io/)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
