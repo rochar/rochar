@@ -21,8 +21,8 @@
         "title": "Call CUDA kernels from Managed Code (.Net C#) in a simple way",
         "url": "https://medium.com/@rochar/call-cuda-kernels-from-managed-code-net-c-in-a-simple-way-1c6540da64b5",
         "description": "utorial on how to call CUDA Kernels from a .Net (C#) library without any third party dependencies, “simple and direct”!"        ,
-        "id" : "A3",
+        "id" : "cudakernelsfrommanagedcode",
         "image" : "cudakernelsfrommanagedcode.png",
-        "redirectToExternal" : true
+        "redirectToExternal" : false
     }
 ]
