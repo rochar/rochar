@@ -38,7 +38,7 @@ ReactDOM.render(
         </main>
         {/* <!-- ======= Footer ======= --> */}
         <footer id="footer">
-          <Footer />
+          <Footer lastupdate={Configuration.lastupdate} />
         </footer>
         <LoadLazyScript path="/iportfolio/assets/js/main.js"></LoadLazyScript>
         {/* <!-- End  Footer --> */}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({lastupdate}) => {
   return (
     <React.Fragment>
        {/* <footer id="footer"> */}
@@ -11,12 +11,15 @@ const Footer = () => {
               <span>Ricardo Rocha</span>
             </strong>
           </div>
-          <div>
+          <div className="text-center"><small>Last update: {lastupdate}</small></div>
+          <small>
+            <div className="text-end">
             TiTi{" "}
             <span className="badge bg-secondary">
               Just you to know I LOVE YOU! :)
             </span>
-          </div>
+            </div>
+          </small>
         </div>
       {/* </footer>
       <a
