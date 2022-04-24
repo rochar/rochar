@@ -3,38 +3,66 @@
         "family": "React",
         "title": "React Styleguidist",
         "url": "https://react-styleguidist.js.org/",
-        "description": "Isolated React component development environment with a living style guide"        
+        "description": "Isolated React component development environment with a living style guide",
+        "stars":0
     },
     {
         "family": "Javascript",
         "title": "axios",
         "url": "https://axios-http.com/",
-        "description": "Http Client"        
+        "description": "Http Client",
+        "stars":0
     },
-    
     {
         "family": "Other",
         "title": "CodeSandbox",
         "url": "https://codesandbox.io/",
-        "description": "Create, share, and get feedback with collaborative sandboxes for rapid web development."        
+        "description": "Create, share, and get feedback with collaborative sandboxes for rapid web development.",
+        "stars":0        
     },
     {
         "family": "Images",
         "title": "unsplash",
         "url": "https://unsplash.com/",
-        "description": "Free images. Rest API Available."        
+        "description": "Free images. Rest API Available.",
+        "stars":0
     },
     {
-        "family": "React,Node",
+        "family": "React,Node,Javascript",
         "title": "React-Gist",
         "url": "https://github.com/tleunen/react-gist",
-        "description": "Component to disply Gist in React Applications"        
+        "description": "Component to disply Gist in React Applications",
+        "stars":0
     },
     {
-        "family": "React",
+        "family": "React,Javascript",
         "title": "React Router",
         "url": "https://reactrouter.com/docs/en/v6/getting-started/tutorial",
-        "description": "React Router"        
+        "description": "React Router",
+        "stars":0
+    },
+    {
+        "family": "Javascript",
+        "title": "MobX",
+        "url": "https://mobx.js.org/",
+        "description": "MobX is a battle tested library that makes state management simple and scalable by transparently applying functional reactive programming (TFRP)",
+        "stars":0
+    },
+    {
+        "family": "Microservices,Api",
+        "title": "Dapr",
+        "url": "https://dapr.io/",
+        "description": "The Distributed Application Runtime (Dapr) provides APIs that simplify microservice connectivity. Whether your communication pattern is service to service invocation or pub/sub messaging, Dapr helps you write resilient and secured microservices",
+        "stars":0
+    },
+    {
+        "family": "Microservices,.Net",
+        "title": "Awesome Microservices .NET - Training",
+        "url": "https://github.com/mjebrahimi/Awesome-Microservices-DotNet",
+        "description": "A collection of awesome training series, articles, videos, books, courses, sample projects, and tools for Microservices in .NET",
+        "stars":3
     }
 
+    
+    
 ]

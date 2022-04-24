@@ -20,12 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <React.Fragment>
       <Router>
-        {/* <!-- ======= Header ======= --> */}
-        <header id="header">
           <Header configuration={Configuration} />
-        </header>
-        {/* <!-- End Header --> */}
-        <main id="main">
           <Routes>
             <Route path="/" element={<Home configuration={Configuration} />} />
             <Route path="article/:id" element={<ArticleDetails />} />
@@ -35,17 +30,12 @@ ReactDOM.render(
             />
           </Routes>
           <ArticlesList items={ArticleData} />
-        </main>
-        {/* <!-- ======= Footer ======= --> */}
-        <footer id="footer">
-          <Footer lastupdate={Configuration.lastupdate} />
-        </footer>
+        <Footer lastupdate={Configuration.lastupdate} />        
         <LoadLazyScript path="/iportfolio/assets/js/main.js"></LoadLazyScript>
-        {/* <!-- End  Footer --> */}
       </Router>
     </React.Fragment>
   </React.StrictMode>,
-  document.querySelector("#root")
+  document.querySelector("#main")
 );
 
 // If you want to start measuring performance in your app, pass a function

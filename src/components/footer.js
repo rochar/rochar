@@ -1,9 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 const Footer = ({lastupdate}) => {
-  return (
+  return ReactDOM.createPortal(
     <React.Fragment>
-       {/* <footer id="footer"> */}
         <div className="container">
           <div className="copyright">
             &copy; Copyright 2022{" "}
@@ -20,15 +20,8 @@ const Footer = ({lastupdate}) => {
             </span>
             </div>
           </small>
-        </div>
-      {/* </footer>
-      <a
-        href="#"
-        className="back-to-top d-flex align-items-center justify-content-center">
-        <i className="bi bi-arrow-up-short"></i>
-      </a>  */}
-
-    </React.Fragment>
+        </div>      
+    </React.Fragment>, document.querySelector('#footer')
   );
 };
 export default Footer;

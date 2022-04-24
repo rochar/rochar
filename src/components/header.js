@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HashLink} from 'react-router-hash-link';
-
+import ReactDOM from "react-dom";
 const Header = ({ configuration }) => {
   const followItems = [
     { id: "github", url: "https://github.com/rochar/" },
@@ -14,9 +14,7 @@ const Header = ({ configuration }) => {
       <i className={`bx bxl-${id}`}></i>
     </a>
   ));
-
-  return (
-    // <!-- ======= Header ======= -->
+  return ReactDOM.createPortal(
     <div className="d-flex flex-column">
       <div className="profile">
         <Link to="/">
@@ -43,8 +41,8 @@ const Header = ({ configuration }) => {
           </li>
         </ul>
       </nav>
-    </div>
-    // <!-- End Header -->
+    </div>, 
+    document.querySelector('#header')
   );
 };
 
