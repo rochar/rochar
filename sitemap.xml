@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rochar.github.io</loc>
-    <lastmod>2022-4-21</lastmod>
+    <lastmod>2022-4-24</lastmod>
   </url>
    <url>
     <loc>https://rochar.github.io/#/article/avoidrelaycommands</loc>
-    <lastmod>2022-4-21</lastmod>
+    <lastmod>2022-4-24</lastmod>
   </url>
    <url>
     <loc>https://rochar.github.io/#/article/optimizememallocation</loc>
-    <lastmod>2022-4-21</lastmod>
+    <lastmod>2022-4-24</lastmod>
   </url>
    <url>
     <loc>https://rochar.github.io/#/article/cudakernelsfrommanagedcode</loc>
-    <lastmod>2022-4-21</lastmod>
+    <lastmod>2022-4-24</lastmod>
   </url>
 </urlset>
